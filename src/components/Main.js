@@ -8,6 +8,7 @@ const Main = () => {
   const [allCountries, setAllCountries] = useState([]);
   const [countries, setCountries] = useState([]);
   const [filterState, setFilterState] = useState("All");
+  const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const countriesPerPage = 8;
 
@@ -17,35 +18,46 @@ const Main = () => {
         "https://restcountries.com/v3.1/all"
       );
       setAllCountries(countriesResponse.data);
-      const filterCountries = (filter) =>
-        setCountries(
-          allCountries.filter(
-            (country) => country.region === filter || filter === "All"
-          )
-        );
+      const filterCountries = (filter) => {
+        if (query === "") {
+          setCountries(
+            allCountries.filter(
+              (country) => country.region === filter || filter === "All"
+            )
+          );
+        } else {
+          setCountries(
+            allCountries.filter((country) =>
+              country.name.common.toLowerCase().includes(query)
+            )
+          );
+        }
+      };
       filterCountries(filterState);
     },
-    [allCountries, filterState]
+    [allCountries, filterState, query]
   );
 
-  const lastCountryIndex = currentPage * countriesPerPage;
-  const firstCountryIndex = lastCountryIndex - countriesPerPage;
-  const currentCountriesCards = countries.slice(
-    firstCountryIndex,
-    lastCountryIndex
+  const IndexOfLastCountry = currentPage * countriesPerPage;
+  const IndexOfFirstCountry = IndexOfLastCountry - countriesPerPage;
+  const visableCountries = countries.slice(
+    IndexOfFirstCountry,
+    IndexOfLastCountry
   );
+  let pages = [];
+  for (let i = 1; i <= Math.ceil(countries.length / countriesPerPage); i++)
+    pages.push(i);
   return (
     <main>
       <section className="tools-bar">
-        <ToolsBar setFilterState={setFilterState} />
+        <ToolsBar setQuery={setQuery} setFilterState={setFilterState} />
       </section>
       <section className="countries">
         <div className="container">
-          <CountriesCards countries={currentCountriesCards} />
+          <CountriesCards visableCountries={visableCountries} />
         </div>
         <Pagination
-          totalCountries={countries.length}
-          countriesPerPage={countriesPerPage}
+          pages={pages}
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
         />

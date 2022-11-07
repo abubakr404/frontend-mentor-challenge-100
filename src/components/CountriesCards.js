@@ -1,7 +1,7 @@
 import CountryCard from "./CountryCard";
 
-const CountriesCards = ({ countries }) => {
-  return countries?.map((country, i) => (
+const CountriesCards = ({ visableCountries }) => {
+  return visableCountries?.map((country, i) => (
     <CountryCard
       key={i}
       flagImage={country.flags.svg}

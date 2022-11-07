@@ -1,11 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { useState } from "react";
-const Search = () => {
+const Search = ({ setQuery }) => {
   return (
     <div className="search-container">
       <FontAwesomeIcon icon={solid("search")} />
-      <input type="search" placeholder="Search for a country..." />
+      <input
+        type="search"
+        placeholder="Search for a country..."
+        onChange={(e) => setQuery(e.target.value)}
+      />
     </div>
   );
 };
@@ -32,10 +36,10 @@ const Filter = ({ setFilterState }) => {
   );
 };
 
-const ToolsBar = ({ setFilterState }) => {
+const ToolsBar = ({ setQuery, setFilterState }) => {
   return (
     <div className="container">
-      <Search />
+      <Search setQuery={setQuery} />
       <Filter setFilterState={setFilterState} />
     </div>
   );

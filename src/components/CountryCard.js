@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CountryCard = ({
   flagImage,
   countryName,
@@ -19,11 +21,13 @@ const CountryCard = ({
 
   return (
     <div className="country-card">
-      <div className="country-flag">
+      <Link to="/details" className="country-flag">
         <img src={flagImage} alt="" />
-      </div>
+      </Link>
       <div className="country-info">
-        <h3 title={countryName}>{countryName}</h3>
+        <Link to="/details" className="country-name">
+          <h3 title={countryName}>{countryName}</h3>
+        </Link>
         <div className="country-details">
           <div className="country-main-details">
             <p>
