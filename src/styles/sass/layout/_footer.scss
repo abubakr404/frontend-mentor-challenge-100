@@ -1,0 +1,26 @@
+footer {
+  @extend %fCenter;
+  @extend %primaryBackground;
+  min-height: 5rem;
+  position: relative;
+  .wave {
+    --wave-1: var(--light-primary-container);
+    --wave-2: var(--dark-primary-container);
+    --wave-3: var(--light-primary);
+    --wave-4: #233155;
+  }
+  p {
+    @extend %fCenter;
+    line-height: 2;
+    margin: 0;
+    gap: 0.375rem;
+    .name {
+      @extend %fCenter;
+      color: var(--dark-primary);
+      gap: 0.125rem;
+    }
+  }
+  .ab-logo-small {
+    max-width: 0.75rem;
+  }
+}

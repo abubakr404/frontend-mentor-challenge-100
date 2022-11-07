@@ -1,0 +1,14 @@
+.works {
+  form {
+    display: grid;
+    gap: 1rem;
+  }
+  .technologies {
+    color: var(--border-gradient);
+  }
+  .project-images{
+    img {
+      max-width: 11rem;
+    }
+  }
+}

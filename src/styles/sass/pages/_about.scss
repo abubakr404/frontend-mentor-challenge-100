@@ -1,0 +1,8 @@
+.about {
+  color: var(--light-on-primary-container);
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

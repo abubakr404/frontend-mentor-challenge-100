@@ -1,0 +1,56 @@
+@use "styles/sass/helpers/variables/variables" as *;
+@use "styles/sass/helpers/mixin" as *;
+
+html {
+  scroll-behavior: smooth;
+}
+:root {
+  --main-transition: #{$mainTransition};
+
+  --main-border-color: #{$borderGradient};
+
+  --main-border-radius: 0.3125rem;
+
+  --main-shadow: 0 0.0625rem 0.25rem #2d2e2e8c;
+
+  --background-light: hsl(0, 0%, 98%);
+  --element-light: hsl(0, 0%, 100%);
+  --text-light: hsl(200, 15%, 8%);
+  --text-light-alt: hsl(0, 0%, 52%);
+
+  --background-dark: hsl(207, 26%, 17%);
+  --element-dark: hsl(209, 23%, 22%);
+  --text-dark: var(--element-light);
+  --text-dark-alt: var(--background-light);
+
+  --header-height: #{$headerHeight};
+  --main-padding-top: 2rem;
+  --main-padding-bottom: 2rem;
+}
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+  position: relative;
+  margin: 0;
+  font-size: 0.875rem;
+  min-height: 100vh;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.container {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  padding: {
+    left: 1rem;
+    right: 1rem;
+  }
+  @include madiaContainer;
+}
+
+@import "styles/sass/main";

@@ -1,0 +1,99 @@
+@import "../libs/TuTi/groups";
+@import "components/animations";
+
+.app {
+  --background: var(--background-light);
+  --element: var(--element-light);
+  --text: var(--text-light);
+  --text-alt: var(--text-light-alt);
+  --scheme-color: light;
+  &.dark {
+    --background: var(--background-dark);
+    --element: var(--element-dark);
+    --text: var(--text-dark);
+    --text-alt: var(--text-dark-alt);
+    --scheme-color: dark;
+  }
+  color-scheme: var(--scheme-color);
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+section {
+  &:not(.countries) {
+    @extend %sectionPadding;
+  }
+  @include in(toSmall) {
+    text-align: center;
+  }
+}
+
+.special-head {
+  @extend %transition;
+  @extend %fCenter;
+  @extend %bold;
+  text-transform: capitalize;
+  margin-bottom: 5rem;
+  position: relative;
+  padding: 0.625rem 1.25rem;
+  font-size: 2rem;
+  @include in(toSmall) {
+    font-size: 1.5rem;
+  }
+  &::after,
+  &::before {
+    @extend %transition;
+    @extend %aCenter;
+    content: "";
+    position: absolute;
+    right: 50%;
+    border-radius: 10rem;
+    bottom: -0.3125rem;
+  }
+  &::after {
+    background-color: var(--light-on-primary-container);
+    height: 0.5rem;
+    width: 1.5rem;
+  }
+  &::before {
+    background-color: var(--light-inverse-primary);
+    height: 0.1875rem;
+    width: 5rem;
+  }
+}
+
+%focus {
+  outline-color: var(--border-gradient);
+  outline-width: 0.0625rem;
+  outline-offset: 0;
+  outline-style: solid;
+}
+
+%primaryBackground {
+  background: var(--primary-gradient);
+  background: {
+    blend: {
+      mode: $primaryGradientBlendMode;
+    }
+  }
+}
+
+.card-text,
+.card-title {
+  @extend %textCiper;
+  max-width: 100%;
+}
+
+@import "layout/header";
+@import "pages/toolsBar";
+@import "pages/countries";
+@import "pages/pagination";
+// @import "pages/works";
+// @import "pages/hero";
+// @import "pages/about";
+// @import "pages/portfolio";
+// @import "pages/blogs";
+// @import "pages/contact";
+// @import "layout/footer";

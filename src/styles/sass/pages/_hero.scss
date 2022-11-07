@@ -1,0 +1,103 @@
+.hero {
+  @extend %fCenter;
+  color: var(--Ab-body-color);
+  background-repeat: no-repeat;
+  background-image: url(../images/Ellipse.svg), url(../images/languages.svg),
+    url(../images/pattern.png), var(--main-gradient);
+  background-size: 400px, 30rem, contain, auto, auto;
+  background-position: 0px -60px, 90% 90%, left top, center, center;
+  margin-top: -$headerHeight;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  @include in(toSmall) {
+    background-image: url(../images/Ellipse.svg), url(../images/pattern.png),
+      var(--main-gradient);
+    background-size: 250px, contain, auto, auto;
+    background-position: -40px -40px, left center, center, center;
+  }
+  h1 {
+    letter-spacing: 0.125rem;
+    color: inherit;
+    @include in(medium) {
+      font-size: calc(1.475rem + 2vw);
+    }
+  }
+  p {
+    color: inherit;
+    margin: 1.125rem 0;
+    font-weight: 500;
+    max-width: 31.25rem;
+    line-height: 1.5;
+    @include in(toSmall) {
+      font-size: 0.875rem;
+      margin: 1.125rem auto;
+    }
+  }
+  .hero-actions {
+    margin: 1.125rem 0;
+    .btn-outline-light {
+      box-shadow: inset -0.125rem -0.125rem 0 var(--Ab-btn-color);
+    }
+    @include in(small) {
+      justify-content: center;
+    }
+  }
+  .hero-content {
+    align-items: center;
+    position: relative;
+    z-index: 3;
+  }
+  .hero-figure {
+    @extend %z1;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(../images/screen.png),
+      url(../images/background-sec.png);
+  }
+  .work-link {
+    left: 11.5%;
+    bottom: 38.75%;
+  }
+  .imgs-viewer {
+    width: 100%;
+    height: 100%;
+    .imgs-container {
+      width: 36%;
+      height: 32.125%;
+      bottom: 38%;
+      left: 10.75%;
+      border-radius: 4px;
+      box-shadow: 0 0 0px 2px $DarkBackground, inset 0 0 2px 0px $DarkBackground;
+      overflow: hidden;
+      background-color: rgba($DarkBackground, 1);
+      &.done {
+        background-color: rgba($DarkBackground, 0.05);
+      }
+      img {
+        position: absolute;
+        opacity: 0;
+        top: 100%;
+        transform: translateY(0%);
+        &.active {
+          animation: autoScroll 30s ease-in-out forwards;
+        }
+      }
+    }
+  }
+  > a.alt-work-link {
+    @extend %hPCenter;
+    @extend %transition;
+    z-index: 9;
+    font-size: 2rem;
+    color: inherit;
+    bottom: 3rem;
+    &:hover {
+      color: var(--light-on-primary-container);
+    }
+    i {
+      animation: bouncing 1.5s infinite;
+    }
+  }
+}

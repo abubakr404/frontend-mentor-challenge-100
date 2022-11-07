@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Main from "./components/Main";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 function App() {
+  const [theme, setTheme] = useState("app");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className={theme}>
+      <header>
+        <div className="container">
+          <div className="logo">
+            <h2>Where in the world?</h2>
+          </div>
+          <nav onClick={() => setTheme(theme === "app" ? "app dark" : "app")}>
+            <div className="mode-switcher">
+              <FontAwesomeIcon icon={solid("moon")} />
+              <span>dark mode</span>
+            </div>
+          </nav>
+        </div>
       </header>
+      <Main />
     </div>
   );
 }

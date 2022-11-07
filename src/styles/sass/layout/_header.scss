@@ -1,0 +1,19 @@
+header {
+  height: var(--header-height);
+  box-shadow: var(--main-shadow);
+  background-color: var(--element);
+  .container {
+    @extend %fSpacerC;
+    height: 100%;
+  }
+  nav {
+    cursor: pointer;
+    text-transform: capitalize;
+  }
+  .mode-switcher {
+    span {
+      margin-left: 0.5rem;
+      font-weight: 600;
+    }
+  }
+}
