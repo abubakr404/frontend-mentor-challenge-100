@@ -26,9 +26,16 @@ const Main = () => {
             )
           );
         } else {
+          const filterKeys = ["capital", "name", "region", "translations"];
           setCountries(
             allCountries.filter((country) =>
-              country.name.common.toLowerCase().includes(query)
+              filterKeys.some(
+                (key) =>
+                  country[key] &&
+                  JSON.stringify(country[key])
+                    .toLocaleLowerCase()
+                    .includes(query.toLocaleLowerCase())
+              )
             )
           );
         }
@@ -50,11 +57,18 @@ const Main = () => {
   return (
     <main>
       <section className="tools-bar">
-        <ToolsBar setQuery={setQuery} setFilterState={setFilterState} />
+        <ToolsBar
+          setCurrentPage={setCurrentPage}
+          setQuery={setQuery}
+          setFilterState={setFilterState}
+        />
       </section>
       <section className="countries">
         <div className="container">
-          <CountriesCards visableCountries={visableCountries} />
+          <CountriesCards
+            visableCountries={visableCountries}
+            allCountries={allCountries}
+          />
         </div>
         <Pagination
           pages={pages}

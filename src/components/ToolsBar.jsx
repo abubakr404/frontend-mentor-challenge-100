@@ -1,14 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { useState } from "react";
-const Search = ({ setQuery }) => {
+const Search = ({ setQuery, setCurrentPage }) => {
   return (
     <div className="search-container">
       <FontAwesomeIcon icon={solid("search")} />
       <input
         type="search"
         placeholder="Search for a country..."
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={(e) => {
+          setCurrentPage(1);
+          setQuery(e.target.value);
+        }}
       />
     </div>
   );
@@ -16,6 +19,7 @@ const Search = ({ setQuery }) => {
 
 const Filter = ({ setFilterState }) => {
   const [dropdownState, setDropdownState] = useState("");
+  const filterOptions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   return (
     <div className={"filter-dropdown" + dropdownState}>
       <div
@@ -26,20 +30,20 @@ const Filter = ({ setFilterState }) => {
         <FontAwesomeIcon icon={solid("chevron-down")} />
       </div>
       <ul className="filter-menu">
-        <li onClick={() => setFilterState("Africa")}>Africa</li>
-        <li onClick={() => setFilterState("Americas")}>America</li>
-        <li onClick={() => setFilterState("Asia")}>Asia</li>
-        <li onClick={() => setFilterState("Europe")}>Europe</li>
-        <li onClick={() => setFilterState("Oceania")}>Oceania</li>
+        {filterOptions.map((option, i) => (
+          <li key={i} onClick={() => setFilterState(option)}>
+            {option}
+          </li>
+        ))}
       </ul>
     </div>
   );
 };
 
-const ToolsBar = ({ setQuery, setFilterState }) => {
+const ToolsBar = ({ setQuery, setFilterState, setCurrentPage }) => {
   return (
     <div className="container">
-      <Search setQuery={setQuery} />
+      <Search setCurrentPage={setCurrentPage} setQuery={setQuery} />
       <Filter setFilterState={setFilterState} />
     </div>
   );

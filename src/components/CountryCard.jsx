@@ -11,6 +11,7 @@ const CountryCard = ({
   topLevelDomain,
   currencies,
   languages,
+  borders,
 }) => {
   const loopInObjects = (object, value) => {
     const values = object
@@ -30,46 +31,56 @@ const CountryCard = ({
         </Link>
         <div className="country-details">
           <div className="country-main-details">
-            <p>
+            <div className="info">
               <span className="title">Native Name: </span>
               <span className="value">
                 {loopInObjects(nativeName, "common").join(", ")}
               </span>
-            </p>
-            <p>
+            </div>
+            <div className="info">
               <span className="title">Population: </span>
-              <span className="value">{population}</span>
-            </p>
-            <p>
+              <span className="value">{population.toLocaleString()}</span>
+            </div>
+            <div className="info">
               <span className="title">Region: </span>
               <span className="value">{region}</span>
-            </p>
-            <p>
+            </div>
+            <div className="info">
               <span className="title">Sub Region: </span>
               <span className="value">{subregion}</span>
-            </p>
-            <p>
+            </div>
+            <div className="info">
               <span className="title">Capital: </span>
               <span className="value">{capital}</span>
-            </p>
+            </div>
           </div>
           <div className="country-more-details">
-            <p>
+            <div className="info">
               <span className="title">Top Level Domain: </span>
-              <span className="value">{topLevelDomain.join(", ")}</span>
-            </p>
-            <p>
+              <span className="value">{topLevelDomain}</span>
+            </div>
+            <div className="info">
               <span className="title">Currencies: </span>
               <span className="value">
                 {loopInObjects(currencies, "name").join(", ")}
               </span>
-            </p>
-            <p>
+            </div>
+            <div className="info">
               <span className="title">Languages: </span>
               <span className="value">
                 {languages ? Object.values(languages).join(", ") : "loading"}
               </span>
-            </p>
+            </div>
+            <div className="info">
+              <span className="title">borders: </span>
+              <div className="borders">
+                {borders.map((border, i) => (
+                  <span className="border" key={i}>
+                    {border.name.common}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
