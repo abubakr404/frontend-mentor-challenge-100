@@ -1,0 +1,68 @@
+.country {
+  padding-bottom: 3.5rem;
+  .container {
+    @extend %fColS;
+  }
+  .link {
+    width: 6.5rem;
+    padding: 0.5rem 1.5rem;
+    margin: {
+      top: 3.5rem;
+      bottom: 3.5rem;
+    }
+  }
+  .country-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    gap: 8rem;
+    flex: 1;
+    @include in(toSmall) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      justify-items: stretch;
+    }
+    .card-title {
+      font-size: 2em;
+      @include in(toSmall) {
+        font-size: 1.5em;
+      }
+    }
+    .country-flag {
+      img {
+        max-width: 100%;
+      }
+    }
+    .country-details {
+      display: flex;
+      gap: 3rem;
+      @include in(toSmall) {
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+      .col-details {
+        flex: 1 50%;
+      }
+    }
+    .country-borders {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      @include in(toSmall) {
+        flex-direction: column;
+      }
+      .title {
+        padding-top: 0.25rem;
+        flex-shrink: 0;
+      }
+      .borders {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .border {
+        opacity: 0.85;
+      }
+    }
+  }
+}

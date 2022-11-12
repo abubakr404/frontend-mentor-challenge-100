@@ -6,12 +6,14 @@
   --element: var(--element-light);
   --text: var(--text-light);
   --text-alt: var(--text-light-alt);
+  --main-shadow: var(--light-shadow);
   --scheme-color: light;
   &.dark {
     --background: var(--background-dark);
     --element: var(--element-dark);
     --text: var(--text-dark);
     --text-alt: var(--text-dark-alt);
+    --main-shadow: var(--dark-shadow);
     --scheme-color: dark;
   }
   color-scheme: var(--scheme-color);
@@ -22,12 +24,17 @@
 }
 
 section {
-  &:not(.countries) {
+  &:not(.countries, .country) {
     @extend %sectionPadding;
+    // @include in(toSmall) {
+    //   text-align: center;
+    // }
   }
-  @include in(toSmall) {
-    text-align: center;
-  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .special-head {
@@ -85,10 +92,31 @@ section {
   @extend %textCiper;
   max-width: 100%;
 }
-
+.country-info {
+  .info {
+    margin-bottom: 0.5rem;
+  }
+  .title {
+    font-weight: 600;
+  }
+  .value {
+    opacity: 0.85;
+  }
+}
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  padding: 0.3125rem 1.5rem;
+  box-shadow: var(--main-shadow);
+  border-radius: var(--main-border-radius);
+  background-color: var(--element);
+}
 @import "layout/header";
 @import "pages/toolsBar";
 @import "pages/countries";
+@import "pages/country";
 @import "pages/pagination";
 // @import "pages/works";
 // @import "pages/hero";

@@ -1,31 +1,46 @@
-import { useState } from "react";
-import Main from "./components/Main";
-import CountryDetails from "./pages/CountryDetails";
-import { Routes, Route, Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import CheckCountry from "./pages/CheckCountry";
+import NotFound from "./pages/NotFound";
 
 function App() {
-  const [theme, setTheme] = useState("app");
+  const [theme, setTheme] = useState("");
+
+  const [allCountries, setAllCountries] = useState([]);
+  const [countries, setCountries] = useState([]);
+
+  useEffect(
+    () => async () => {
+      const countriesResponse = await axios.get("https://restcountries.com/v3.1/all");
+      setAllCountries(countriesResponse.data);
+      setCountries(countriesResponse.data);
+    },
+    []
+  );
+
   return (
-    <div className={theme}>
+    <div className={`app${theme}`}>
       <header>
-        <div className="container">
-          <Link to="/" className="logo">
-            <h2>Where in the world?</h2>
-          </Link>
-          <nav onClick={() => setTheme(theme === "app" ? "app dark" : "app")}>
-            <div className="mode-switcher">
-              <FontAwesomeIcon icon={solid("moon")} />
-              <span>dark mode</span>
-            </div>
-          </nav>
-        </div>
+        <Header setTheme={setTheme} theme={theme} />
       </header>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/details" element={<CountryDetails />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home setCountries={setCountries} countries={countries} allCountries={allCountries} />
+            }
+          />
+          <Route
+            path="countries/:countryName"
+            element={<CheckCountry allCountries={allCountries} />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
     </div>
   );
 }

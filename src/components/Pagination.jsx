@@ -1,5 +1,27 @@
-const Pagination = ({ pages, setCurrentPage, currentPage }) => {
+import { useEffect } from "react";
+const Pagination = ({
+  data,
+  setCurrentPage,
+  currentPage,
+  setCurrentCountries,
+  countriesPerPage,
+}) => {
   const pageButtonToShow = 3;
+
+  const IndexOfLastCountry = currentPage * countriesPerPage;
+  const IndexOfFirstCountry = IndexOfLastCountry - countriesPerPage;
+
+  useEffect(() => {
+    const visableCountries = data.slice(
+      IndexOfFirstCountry,
+      IndexOfLastCountry
+    );
+    setCurrentCountries(visableCountries);
+  }, [IndexOfFirstCountry, IndexOfLastCountry, data, setCurrentCountries]);
+
+  let pages = [];
+  for (let i = 1; i <= Math.ceil(data.length / countriesPerPage); i++)
+    pages.push(i);
 
   const firstPage = pages[0];
   const lastPage = pages[pages.length - 1];
@@ -18,7 +40,7 @@ const Pagination = ({ pages, setCurrentPage, currentPage }) => {
       <div className="pagination">
         <button
           onClick={() =>
-            currentPage > firstPage && setCurrentPage(--currentPage)
+            currentPage > firstPage && setCurrentPage((prevPage) => --prevPage)
           }
           className={currentPage === firstPage ? "disabled" : undefined}
         >
@@ -57,7 +79,7 @@ const Pagination = ({ pages, setCurrentPage, currentPage }) => {
 
         <button
           onClick={() =>
-            currentPage < lastPage && setCurrentPage(++currentPage)
+            currentPage < lastPage && setCurrentPage((prevPage) => ++prevPage)
           }
           className={currentPage === lastPage ? "disabled" : undefined}
         >

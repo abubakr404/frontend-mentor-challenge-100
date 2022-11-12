@@ -1,19 +1,22 @@
 .pagination {
+  margin-top: 1.5rem;
   @extend %fCenter;
   height: 5rem;
   button {
     border: none;
     margin: 0.3125rem;
-    border-radius: 0.625rem;
-    color: white;
-    background-color: black;
-    height: 2.5rem;
-    width: 2.5rem;
+    @extend %transition;
+    @extend %fCenter;
+    box-shadow: var(--main-shadow);
+    border-radius: var(--main-border-radius);
+    background-color: var(--element);
+    height: 2.75rem;
+    width: 2.75rem;
     &.active,
     &:hover,
     &:focus {
-      background-color: #858585;
-      color: white;
+      background-color: var(--text-alt);
+      color: var(--element);
     }
   }
 }

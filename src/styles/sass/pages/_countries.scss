@@ -6,31 +6,17 @@
   .country-card {
     background-color: var(--element);
     border-radius: var(--main-border-radius);
-    box-shadow: var(--main-shadow);
     overflow: hidden;
-    .country-flag {
-      img {
-        width: 100%;
-        height: 10rem;
-        object-fit: cover;
-      }
+    box-shadow: var(--main-shadow);
+  }
+  .country-flag {
+    img {
+      width: 100%;
+      height: 10rem;
+      object-fit: cover;
     }
-    .country-info {
-      padding: 0 1.5rem 1.875rem;
-      h3 {
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-      }
-      .title {
-        font-weight: 600;
-      }
-      span.border {
-        padding: 0.25rem 0.5rem;
-        background-color: antiquewhite;
-        border-radius: 0.5rem;
-        margin: 0.25rem;
-      }
-    }
+  }
+  .country-info {
+    padding: 0 1.5rem 1.875rem;
   }
 }

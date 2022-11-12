@@ -2,6 +2,7 @@
   .container {
     @extend %fSpacerC;
     flex-wrap: wrap;
+    gap: 3rem;
   }
   .search-container {
     @extend %fCenter;

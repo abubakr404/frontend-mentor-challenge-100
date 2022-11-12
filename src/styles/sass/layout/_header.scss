@@ -6,11 +6,17 @@ header {
     @extend %fSpacerC;
     height: 100%;
   }
+  .logo {
+    @include in(toSmall) {
+      font-size: 1em;
+    }
+  }
   nav {
     cursor: pointer;
     text-transform: capitalize;
   }
   .mode-switcher {
+    @extend %fCenter;
     span {
       margin-left: 0.5rem;
       font-weight: 600;
