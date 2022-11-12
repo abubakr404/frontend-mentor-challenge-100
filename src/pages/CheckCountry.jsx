@@ -12,7 +12,7 @@ const CheckCountry = ({ allCountries }) => {
     const countryInfo = allCountries?.filter(
       (ele) => ele.name.common.toLocaleLowerCase().split(" ").join("-") === countryName
     );
-    let countryBorder = countryInfo[0].borders
+    let countryBorder = countryInfo[0]?.borders
       ? allCountries.filter((coun) => JSON.stringify(countryInfo[0].borders).includes(coun.cca3))
       : [{ name: { common: "Island" } }];
     if (countryInfo.length > 0) {

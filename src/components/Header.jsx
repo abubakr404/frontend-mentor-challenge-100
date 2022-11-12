@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 const Header = ({ theme, setTheme }) => {
   return (
     <div className="container">
-      <Link to="/" className="logo">
+      <Link to="frontend-mentor-challenge-100/" className="logo">
         <h2>Where in the world?</h2>
       </Link>
-      <nav
-        onClick={() => setTheme((prev) => (prev === " dark" ? "" : " dark"))}
-      >
+      <nav onClick={() => setTheme((prev) => (prev === " dark" ? "" : " dark"))}>
         <div className="mode-switcher">
           <FontAwesomeIcon icon={!theme ? regular("moon") : solid("moon")} />
           <span>dark mode</span>
