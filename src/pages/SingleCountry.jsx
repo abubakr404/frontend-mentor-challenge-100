@@ -7,7 +7,7 @@ const SingleCountry = ({ countryInfo, countryBorder }) => {
   return (
     <section className="country">
       <div className="container">
-        <Link to="/frontend-mentor-challenge-100" className="link btn">
+        <Link to="/" className="link btn">
           <FontAwesomeIcon icon={solid("long-arrow-left")} />
           <span>Back</span>
         </Link>

@@ -1,0 +1,3 @@
+[bulid]
+  bulid = "npm run bulid"
+  publish = "bulid"

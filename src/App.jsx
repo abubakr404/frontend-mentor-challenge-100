@@ -29,16 +29,17 @@ function App() {
       <main>
         <Routes>
           <Route
-            path="frontend-mentor-challenge-100"
+            exact
+            path="/"
             element={
               <Home setCountries={setCountries} countries={countries} allCountries={allCountries} />
             }
           />
           <Route
-            path="frontend-mentor-challenge-100/countries/:countryName"
+            path="/countries/:countryName"
             element={<CheckCountry allCountries={allCountries} />}
           />
-          <Route path="frontend-mentor-challenge-100/*" element={<NotFound />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </main>
     </div>

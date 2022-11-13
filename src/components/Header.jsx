@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Header = ({ theme, setTheme }) => {
   return (
     <div className="container">
-      <Link to="frontend-mentor-challenge-100/" className="logo">
+      <Link to="/" className="logo">
         <h2>Where in the world?</h2>
       </Link>
       <nav onClick={() => setTheme((prev) => (prev === " dark" ? "" : " dark"))}>
