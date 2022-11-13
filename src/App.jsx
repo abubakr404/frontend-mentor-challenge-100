@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -12,14 +11,14 @@ function App() {
   const [allCountries, setAllCountries] = useState([]);
   const [countries, setCountries] = useState([]);
 
-  useEffect(
-    () => async () => {
-      const countriesResponse = await axios.get("https://restcountries.com/v3.1/all");
-      setAllCountries(countriesResponse.data);
-      setCountries(countriesResponse.data);
-    },
-    []
-  );
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((response) => response.json())
+      .then((result) => {
+        setAllCountries(result);
+        setCountries(result);
+      });
+  }, []);
 
   return (
     <div className={`app${theme}`}>
