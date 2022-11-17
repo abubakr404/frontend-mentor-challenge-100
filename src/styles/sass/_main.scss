@@ -1,24 +1,45 @@
 @import "../libs/TuTi/groups";
 @import "components/animations";
-
-.app {
-  --background: var(--background-light);
-  --element: var(--element-light);
-  --text: var(--text-light);
-  --text-alt: var(--text-light-alt);
-  --main-shadow: var(--light-shadow);
-  --scheme-color: light;
-  &.dark {
+@media (prefers-color-scheme: light) {
+  .app {
+    --background: var(--background-light);
+    --element: var(--element-light);
+    --text: var(--text-light);
+    --text-alt: var(--text-light-alt);
+    --main-shadow: var(--light-shadow);
+    --scheme-color: light;
+    &.toggleMode {
+      --background: var(--background-dark);
+      --element: var(--element-dark);
+      --text: var(--text-dark);
+      --text-alt: var(--text-dark-alt);
+      --main-shadow: var(--dark-shadow);
+      --scheme-color: dark;
+    }
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .app {
     --background: var(--background-dark);
     --element: var(--element-dark);
     --text: var(--text-dark);
     --text-alt: var(--text-dark-alt);
     --main-shadow: var(--dark-shadow);
     --scheme-color: dark;
+    &.toggleMode {
+      --background: var(--background-light);
+      --element: var(--element-light);
+      --text: var(--text-light);
+      --text-alt: var(--text-light-alt);
+      --main-shadow: var(--light-shadow);
+      --scheme-color: light;
+    }
   }
-  color-scheme: var(--scheme-color);
+}
+.app {
   min-height: 100vh;
   min-width: 100vw;
+  color-scheme: var(--scheme-color);
   background-color: var(--background);
   color: var(--text);
 }

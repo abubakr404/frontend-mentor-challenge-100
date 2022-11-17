@@ -31,7 +31,11 @@ function App() {
             exact
             path="/"
             element={
-              <Home setCountries={setCountries} countries={countries} allCountries={allCountries} />
+              <Home
+                setCountries={setCountries}
+                countries={countries}
+                allCountries={allCountries}
+              />
             }
           />
           <Route

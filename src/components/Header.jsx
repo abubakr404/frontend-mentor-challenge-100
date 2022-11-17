@@ -7,7 +7,9 @@ const Header = ({ theme, setTheme }) => {
       <Link to="/" className="logo">
         <h2>Where in the world?</h2>
       </Link>
-      <nav onClick={() => setTheme((prev) => (prev === " dark" ? "" : " dark"))}>
+      <nav
+        onClick={() => setTheme((prev) => (prev === " toggleMode" ? "" : " toggleMode"))}
+      >
         <div className="mode-switcher">
           <FontAwesomeIcon icon={!theme ? regular("moon") : solid("moon")} />
           <span>dark mode</span>
